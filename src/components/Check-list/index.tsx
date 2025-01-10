@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Icon from "../Icon/Icon";
+import CheckIcon from "../CheckIcon";
 
 export default function CheckList() {
   const [isActive, setActive] = useState(false);
@@ -13,7 +13,7 @@ export default function CheckList() {
       className="rounded-3xl border-solid border-2 border-slate-900 flex items-center gap-4 p-2"
       onClick={onClick}
     >
-      <Icon isActive={isActive} />
+      <CheckIcon isActive={isActive} />
       비타민 챙겨먹기
     </div>
   ) : (
@@ -22,7 +22,7 @@ export default function CheckList() {
         className="rounded-3xl border-solid border-2 border-slate-900 flex items-center gap-4 p-2 bg-violet-100"
         onClick={onClick}
       >
-        <Icon isActive={isActive} />
+        <CheckIcon isActive={isActive} />
         <span className="line-through">비타민 챙겨먹기</span>
       </div>
     </div>

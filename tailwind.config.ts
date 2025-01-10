@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import type { PluginAPI } from "tailwindcss/types/config";
 
 const config: Config = {
   content: [
@@ -19,7 +20,7 @@ const config: Config = {
           900: "#0F172A",
         },
         primary: "#7C3AED",
-        point: "#F43F5E",
+        rose: "#F43F5E",
         bgLight: "#EDE9FE",
         yellowGreen: "#BEF264",
         brown: "#92400E",
@@ -35,7 +36,20 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }: PluginAPI) {
+      addUtilities({
+        ".plus": {
+          backgroundImage: "url('/plus.svg')",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          display: "inline-block",
+          width: "1em",
+          height: "1em",
+        },
+      });
+    },
+  ],
 };
 
 export default config;

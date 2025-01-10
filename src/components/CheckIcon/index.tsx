@@ -2,7 +2,7 @@ interface IconProps {
   isActive: boolean;
 }
 
-export default function Icon({ isActive }: IconProps) {
+export default function CheckIcon({ isActive }: IconProps) {
   return !isActive ? (
     <span>
       <svg
@@ -18,7 +18,7 @@ export default function Icon({ isActive }: IconProps) {
           r="15"
           fill="#FEFCE8"
           stroke="#0F172A"
-          stroke-width="2"
+          strokeWidth="2"
         />
       </svg>
     </span>
@@ -35,9 +35,9 @@ export default function Icon({ isActive }: IconProps) {
         <path
           d="M8 16.2857L13.8182 22L24 12"
           stroke="#FEFCE8"
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </span>
