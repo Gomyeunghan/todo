@@ -5,6 +5,7 @@ interface ButtonProps {
   variant: ButtonVariant;
   children: ReactNode;
   className?: string;
+  handleClick: () => void;
 }
 
 type ButtonVariant = "add" | "delete" | "correction";
@@ -31,9 +32,11 @@ export default function Button({
   variant,
   children,
   className = "",
+  handleClick,
 }: ButtonProps) {
   return (
     <button
+      onClick={handleClick}
       className={`border-solid rounded-3xl border-2 border-slate-900 p-4 flex items-center gap-2 ${buttonStyles[variant]} ${className}`}
     >
       <Icon type={iconTypes[variant]} color={textStyles[variant]} />

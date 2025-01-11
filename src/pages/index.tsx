@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 export default function Home() {
   return (
     <div className="flex flex-col items-center mt-7 gap-12">
-      <TodoZone />
+      <TodoZone checkList={["비타민챙기기"]} />
       <DoneZone />
     </div>
   );

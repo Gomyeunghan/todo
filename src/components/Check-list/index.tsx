@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CheckIcon from "../CheckIcon";
 
-export default function CheckList() {
+export default function CheckList({ list }: { list: string }) {
   const [isActive, setActive] = useState(false);
 
   const onClick = () => {
@@ -14,7 +14,7 @@ export default function CheckList() {
       onClick={onClick}
     >
       <CheckIcon isActive={isActive} />
-      비타민 챙겨먹기
+      {list}
     </div>
   ) : (
     <div>
@@ -23,7 +23,7 @@ export default function CheckList() {
         onClick={onClick}
       >
         <CheckIcon isActive={isActive} />
-        <span className="line-through">비타민 챙겨먹기</span>
+        <span className="line-through">{list}</span>
       </div>
     </div>
   );

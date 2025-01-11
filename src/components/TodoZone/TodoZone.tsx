@@ -1,4 +1,6 @@
-export default function TodoZone() {
+import CheckList from "../Check-list";
+
+export default function TodoZone({ checkList }: { checkList: string[] }) {
   return (
     <div className="flex items-start flex-col w-full">
       <svg
@@ -14,22 +16,32 @@ export default function TodoZone() {
           fill="#15803D"
         />
       </svg>
-      <div className="flex flex-col gap-4 items-center items-center w-full">
-        <img
-          src="/Type=todo, Size=Small.svg"
-          alt=""
-          className="block md:hidden"
-        />
-        <img
-          src="/Type=Todo, Size=Large.svg"
-          alt=""
-          className="hidden md:block"
-        />
-        <div className="flex flex-col items-center font-bold text-slate-400">
-          <p>할 일이 없어요.</p>
-          <p>TODO 를 새롭게 추가해주세요!</p>
+      {checkList ? (
+        checkList.map((item, index) => {
+          return (
+            <li key={index} className="list-none">
+              <CheckList list={item} />
+            </li>
+          );
+        })
+      ) : (
+        <div className="flex flex-col gap-4 items-center items-center w-full">
+          <img
+            src="/Type=todo, Size=Small.svg"
+            alt=""
+            className="block md:hidden"
+          />
+          <img
+            src="/Type=Todo, Size=Large.svg"
+            alt=""
+            className="hidden md:block"
+          />
+          <div className="flex flex-col items-center font-bold text-slate-400">
+            <p>할 일이 없어요.</p>
+            <p>TODO 를 새롭게 추가해주세요!</p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
