@@ -1,6 +1,6 @@
 export default function Search() {
   return (
-    <div>
+    <div className="w-full">
       <input
         type="text"
         placeholder="할 일을 입력해주세요"

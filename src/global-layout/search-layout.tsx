@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 export default function SearchLayOut({ children }: { children: ReactNode }) {
   return (
     <div>
-      <div className="flex items-center gap-2 justify-center ml-10">
+      <div className="flex items-center gap-2 justify-center">
         <Search />
         <Button variant="add">추가하기</Button>
       </div>

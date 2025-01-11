@@ -1,6 +1,6 @@
 export default function Icon({ type, color }: { type: string; color: string }) {
   return type === "x" ? (
-    <span className={`text-${color}`}>
+    <span className={color}>
       <svg
         width="16"
         height="16"
@@ -23,7 +23,7 @@ export default function Icon({ type, color }: { type: string; color: string }) {
       </svg>
     </span>
   ) : type === "add" ? (
-    <span className={`text-${color}`}>
+    <span className={color}>
       <svg
         width="16"
         height="16"

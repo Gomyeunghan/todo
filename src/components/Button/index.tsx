@@ -22,7 +22,7 @@ const iconTypes = {
 } as const;
 
 const textStyles = {
-  add: "white",
+  add: "text-white",
   delete: "text-white",
   correction: "text-slate-900",
 } as const;
@@ -37,7 +37,9 @@ export default function Button({
       className={`border-solid rounded-3xl border-2 border-slate-900 p-4 flex items-center gap-2 ${buttonStyles[variant]} ${className}`}
     >
       <Icon type={iconTypes[variant]} color={textStyles[variant]} />
-      <span className={`hidden md:block ${textStyles[v]}`}>{children}</span>
+      <span className={`hidden md:block ${textStyles[variant]}`}>
+        {children}
+      </span>
     </button>
   );
 }
