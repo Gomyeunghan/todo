@@ -5,6 +5,8 @@ interface ButtonProps {
   variant: ButtonVariant;
   children: ReactNode;
   className?: string;
+  textClassName?: string;
+  IconeColor?: string;
   handleClick: () => void;
 }
 
@@ -13,7 +15,7 @@ type ButtonVariant = "add" | "delete" | "correction";
 const buttonStyles = {
   add: "bg-primary text-slate-900",
   delete: "bg-rose text-white",
-  correction: "bg-yellowGreen text-slate-900",
+  correction: "bg-slate-200 text-slate-900",
 } as const;
 
 const iconTypes = {
@@ -22,27 +24,21 @@ const iconTypes = {
   correction: "correction",
 } as const;
 
-const textStyles = {
-  add: "text-white",
-  delete: "text-white",
-  correction: "text-slate-900",
-} as const;
-
 export default function Button({
   variant,
   children,
   className = "",
+  textClassName = "",
+  IconeColor = "text-slate-200",
   handleClick,
 }: ButtonProps) {
   return (
     <button
       onClick={handleClick}
-      className={`border-solid rounded-3xl border-2 border-slate-900 p-4 flex items-center gap-2 ${buttonStyles[variant]} ${className}`}
+      className={`border-solid rounded-3xl border-2 border-slate-900 p-4 flex items-center gap-2 justify-center ${buttonStyles[variant]} ${className}`}
     >
-      <Icon type={iconTypes[variant]} color={textStyles[variant]} />
-      <span className={`hidden md:block ${textStyles[variant]}`}>
-        {children}
-      </span>
+      <Icon type={iconTypes[variant]} color={IconeColor} />
+      <span className={` ${textClassName}`}>{children}</span>
     </button>
   );
 }

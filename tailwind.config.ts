@@ -40,13 +40,13 @@ const config: Config = {
   plugins: [
     function ({ addUtilities }: PluginAPI) {
       addUtilities({
-        ".plus": {
-          backgroundImage: "url('/plus.svg')",
+        memo: {
+          backgroundImage: "url('/memo.svg')",
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           display: "inline-block",
-          width: "1em",
-          height: "1em",
+          width: "100%",
+          height: "100%",
         },
       });
     },

@@ -1,4 +1,4 @@
-import CheckList from "../Check-list";
+import CheckList from "../Check-list/Check-list";
 
 export default function DoneZone({ doneLists }: { doneLists: string[] }) {
   return (
@@ -20,7 +20,7 @@ export default function DoneZone({ doneLists }: { doneLists: string[] }) {
         doneLists.map((item, index) => {
           return (
             <li key={index} className="list-none">
-              <CheckList list={item} Active={true} />
+              <CheckList list={item} Active={true} id={1} />
             </li>
           );
         })

@@ -1,4 +1,4 @@
-import CheckList from "../Check-list";
+import CheckList from "../Check-list/Check-list";
 
 export default function TodoZone({ checkList }: { checkList: string[] }) {
   return (

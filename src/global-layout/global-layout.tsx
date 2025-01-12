@@ -6,7 +6,7 @@ export default function GlobalLayOut({ children }: { children: ReactNode }) {
   return (
     <StoreProvider>
       <Header />
-      <main className="px-4">{children}</main>
+      <main className="px-4 h-full">{children}</main>
     </StoreProvider>
   );
 }

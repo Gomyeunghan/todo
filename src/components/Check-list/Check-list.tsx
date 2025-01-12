@@ -3,13 +3,16 @@
 import { useEffect } from "react";
 import CheckIcon from "../CheckIcon";
 import { useStore } from "@/provider/StoreProvider";
+import Link from "next/link";
 
 export default function CheckList({
   list,
   Active,
+  id,
 }: {
   list: string;
   Active: boolean;
+  id: number;
 }) {
   const todoList = useStore((state) => state.todoList);
   const setTodoList = useStore((state) => state.setTodoList);
@@ -43,12 +46,14 @@ export default function CheckList({
       </div>
     </div>
   ) : (
-    <div
-      className="rounded-3xl border-solid border-2 border-slate-900 flex items-center gap-4 p-2"
-      onClick={onClick}
-    >
-      <CheckIcon isActive={Active} />
-      {list}
-    </div>
+    <Link href={`/item/${id}`}>
+      <div
+        className="rounded-3xl border-solid border-2 border-slate-900 flex items-center gap-4 p-2"
+        onClick={onClick}
+      >
+        <CheckIcon isActive={Active} />
+        {list}
+      </div>
+    </Link>
   );
 }

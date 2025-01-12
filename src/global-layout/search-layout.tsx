@@ -24,7 +24,11 @@ export default function SearchLayOut({ children }: { children: ReactNode }) {
     <div>
       <div className="flex items-center gap-2 justify-center">
         <Search onChange={onChange} />
-        <Button variant="add" handleClick={handleClick}>
+        <Button
+          variant="add"
+          handleClick={handleClick}
+          textClassName="text-white hidden md:block"
+        >
           추가하기
         </Button>
       </div>
