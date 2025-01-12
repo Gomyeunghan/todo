@@ -1,10 +1,5 @@
 interface Items {
   name: string;
-  // imageUrl?: string;
-  // isComplated: boolean;
-  // memo?: string;
-  // tenanId: string;
-  // id: number;
 }
 
 export default async function postTodo(todo: Items): Promise<Items | null> {
@@ -14,6 +9,7 @@ export default async function postTodo(todo: Items): Promise<Items | null> {
     const response = await fetch(url, {
       method: "POST",
       headers: {
+        accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(todo), // 데이터를 JSON으로 직렬화

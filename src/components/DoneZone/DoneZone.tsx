@@ -1,6 +1,12 @@
 import CheckList from "../Check-list/Check-list";
 
-export default function DoneZone({ doneLists }: { doneLists: string[] }) {
+export default function DoneZone({
+  doneLists,
+}: {
+  doneLists: { id?: number; name: string; isCompleted: boolean }[];
+}) {
+  const arr = doneLists.filter((item) => item.isCompleted);
+
   return (
     <div className="flex items-start flex-col w-full">
       <svg
@@ -16,11 +22,18 @@ export default function DoneZone({ doneLists }: { doneLists: string[] }) {
           fill="#FCD34D"
         />
       </svg>
-      {doneLists.length !== 0 ? (
-        doneLists.map((item, index) => {
+      {arr.length > 0 ? (
+        arr.map((item, index) => {
           return (
             <li key={index} className="list-none">
-              <CheckList list={item} Active={true} id={1} />
+              <CheckList
+                list={item.name}
+                Active={item.isCompleted}
+                id={item.id!}
+                onClick={() => {
+                  handleCheckListClick(item);
+                }}
+              />
             </li>
           );
         })

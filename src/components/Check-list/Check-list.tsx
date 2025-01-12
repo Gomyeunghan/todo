@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { ChangeEvent, useState } from "react";
 import CheckIcon from "../CheckIcon";
-// import { useStore } from "@/provider/StoreProvider";
 import Link from "next/link";
 
 export default function CheckList({
@@ -11,33 +10,21 @@ export default function CheckList({
   id,
   detail,
   onClick,
+  onChange,
 }: {
   list: string;
   Active: boolean;
   id: number;
   detail?: boolean;
   onClick?: () => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
-  // const todoList = useStore((state) => state.todoList);
-  // const setTodoList = useStore((state) => state.setTodoList);
-  // const setDoneList = useStore((state) => state.setDoneList);
-  // const doneList = useStore((state) => state.doneList);
+  const [inputValue, setInputValue] = useState(list);
 
-  // const onClick = () => {
-  //   if (Active) {
-  //     const updatedDoneList = doneList.filter((item) => item !== list);
-  //     const updatedList = [...todoList, list];
-  //     setTodoList(updatedList);
-  //     setDoneList(updatedDoneList);
-  //   } else {
-  //     const updatedList = todoList.filter((item) => item !== list);
-  //     const updatedDoneList = [...doneList, list];
-  //     setTodoList(updatedList);
-  //     setDoneList(updatedDoneList);
-  //   }
-  // };
-
-  useEffect(() => {}, [Active]);
+  const onChagneInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    onChange!(e);
+  };
 
   return Active ? (
     <div>
@@ -57,9 +44,9 @@ export default function CheckList({
       <CheckIcon isActive={Active} />
       <input
         type="text"
-        value={list}
+        value={inputValue}
         className="underline decoration-1"
-        onChange={() => {}}
+        onChange={onChagneInput}
       />
     </div>
   ) : (

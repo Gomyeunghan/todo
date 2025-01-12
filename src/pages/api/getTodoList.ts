@@ -4,7 +4,12 @@ export default async function getTodoList(): Promise<
   const url = `https://assignment-todolist-api.vercel.app/api/Han/items?page=1&pageSize=10`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        accept: "application/json", // JSON 응답을 명시적으로 요청
+      },
+    });
     if (!response.ok) {
       console.error("Failed to fetch:", response.status, response.statusText);
       return null;

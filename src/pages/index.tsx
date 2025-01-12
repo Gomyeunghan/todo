@@ -2,7 +2,7 @@ import DoneZone from "@/components/DoneZone/DoneZone";
 import TodoZone from "@/components/TodoZone/TodoZone";
 import SearchLayOut from "@/global-layout/search-layout";
 import { useStore } from "@/provider/StoreProvider";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import getTodoList from "./api/getTodoList";
 
 interface todolistType {
@@ -18,7 +18,7 @@ export const getServerSideProps = async (): Promise<{
     (await getTodoList())?.map((todo) => ({
       id: todo.id!,
       name: todo.name,
-      isCompleted: false, // 기본값으로 isCompleted 추가
+      isCompleted: todo.isCompleted,
     })) || []; // null일 경우 빈 배열로 초기화
 
   return {
@@ -33,18 +33,18 @@ interface HomeProps {
 }
 
 export default function Home({ todoLists }: HomeProps) {
-  console.log(todoLists);
-
   const todoList = useStore((state) => state.todoList as todolistType[]);
-  const doneList = useStore((state) => state.doneList);
   const setTodoList = useStore((state) => state.setTodoList);
 
-  setTodoList(todoLists);
+  console.log(todoList);
+
+  useEffect(() => {
+    setTodoList(todoLists);
+  }, [setTodoList, todoLists]);
 
   return (
-    <div className="flex flex-col items-center mt-7 gap-12">
+    <div>
       <TodoZone checkList={todoList} />
-      <DoneZone doneLists={doneList} />
     </div>
   );
 }

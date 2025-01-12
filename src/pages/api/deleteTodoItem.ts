@@ -6,6 +6,7 @@ export default async function deleteTodoItem(id: number): Promise<null> {
     const response = await fetch(url, {
       method: "DELETE",
       headers: {
+        accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(todo), // 데이터를 JSON으로 직렬화

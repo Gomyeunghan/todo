@@ -10,7 +10,6 @@ export const useStore = <T,>(selector: (state: TodoListState) => T): T => {
   return zustandUseStore(store, selector);
 };
 
-// storeRef 타입 수정
 export default function StoreProvider({ children }: PropsWithChildren) {
   const storeRef = useRef<StoreApi<TodoListState>>(null);
 
