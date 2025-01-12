@@ -1,8 +1,8 @@
 import { StateCreator } from "zustand";
 
 export interface TodoListState {
-  todoList: string[];
-  setTodoList: (value: string[]) => void;
+  todoList: { id?: number | null; name: string }[];
+  setTodoList: (value: { id?: number | null; name: string }[]) => void;
   doneList: string[];
   setDoneList: (value: string[]) => void;
   isActive: boolean;
@@ -11,7 +11,8 @@ export interface TodoListState {
 
 export const createTodoStore: StateCreator<TodoListState> = (set) => ({
   todoList: [] || null,
-  setTodoList: (value: string[]) => set({ todoList: value }),
+  setTodoList: (value: { id?: number | null; name: string }[]) =>
+    set({ todoList: value }),
   doneList: [],
   setDoneList: (value: string[]) => set({ doneList: value }),
   isActive: false,

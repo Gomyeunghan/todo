@@ -1,6 +1,12 @@
-import CheckList from "../Check-list/Check-list";
+import CheckList from "@/components/Check-list/Check-list";
 
-export default function TodoZone({ checkList }: { checkList: string[] }) {
+export default function TodoZone({
+  checkList,
+}: {
+  checkList: { id?: number; name: string; isCompleted: boolean }[];
+}) {
+  console.log(checkList);
+
   return (
     <div className="flex items-start flex-col w-full">
       <svg
@@ -16,11 +22,13 @@ export default function TodoZone({ checkList }: { checkList: string[] }) {
           fill="#15803D"
         />
       </svg>
-      {checkList.length !== 0 ? (
+      {checkList.length > 0 ? (
         checkList.map((item, index) => {
+          console.log(item.id);
+
           return (
             <li key={index} className="list-none">
-              <CheckList list={item} Active={false} />
+              <CheckList list={item.name} Active={false} id={item.id!} />
             </li>
           );
         })
