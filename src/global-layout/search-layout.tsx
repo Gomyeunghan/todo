@@ -40,7 +40,7 @@ export default function SearchLayOut({ children }: { children: ReactNode }) {
         <Button
           variant="add"
           handleClick={handleClick}
-          textClassName="text-white hidden md:block"
+          textClassName="text-white hidden md:block whitespace-nowrap"
         >
           추가하기
         </Button>

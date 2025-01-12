@@ -29,8 +29,8 @@ export default function TodoZone({
   };
 
   return (
-    <div className="flex flex-col items-center mt-7 gap-12">
-      <div className="flex items-start flex-col w-full">
+    <div className="flex flex-col items-center mt-7 gap-12 lg:flex-row lg:items-start">
+      <div className="flex items-start flex-col w-full gap-4">
         <svg
           width="101"
           height="36"
@@ -48,7 +48,7 @@ export default function TodoZone({
           arr.map((item, index) => {
             console.log(item.id);
             return (
-              <li key={index} className="list-none">
+              <li key={index} className="list-none w-full">
                 <CheckList
                   list={item.name}
                   Active={item.isCompleted}
@@ -58,7 +58,7 @@ export default function TodoZone({
             );
           })
         ) : (
-          <div className="flex flex-col gap-4 items-center items-center w-full">
+          <div className="flex flex-col gap-4 items-center w-full">
             <img
               src="/Type=todo, Size=Small.svg"
               alt=""
@@ -75,8 +75,8 @@ export default function TodoZone({
             </div>
           </div>
         )}
-      </div>{" "}
-      <div className="flex items-start flex-col w-full">
+      </div>
+      <div className="flex items-start flex-col w-full gap-4">
         <svg
           width="97"
           height="36"
@@ -93,7 +93,7 @@ export default function TodoZone({
         {donearr.length > 0 ? (
           donearr.map((item, index) => {
             return (
-              <li key={index} className="list-none">
+              <li key={index} className="list-none w-full">
                 <CheckList
                   list={item.name}
                   Active={item.isCompleted}

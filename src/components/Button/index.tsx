@@ -35,7 +35,7 @@ export default function Button({
   return (
     <button
       onClick={handleClick}
-      className={`border-solid rounded-3xl border-2 border-slate-900 p-4 flex items-center gap-2 justify-center ${buttonStyles[variant]} ${className}`}
+      className={`border-solid rounded-3xl border-2 border-slate-900 p-4 flex items-center gap-2 justify-center ${buttonStyles[variant]} ${className} max-w-44`}
     >
       <Icon type={iconTypes[variant]} color={IconeColor} />
       <span className={` ${textClassName}`}>{children}</span>

@@ -111,7 +111,7 @@ export default function Todo({
   };
 
   return (
-    <div className="w-full h-lvh flex flex-col gap-6 overflow-auto mb-32">
+    <div className="w-full h-lvh flex flex-col gap-6 overflow-auto mb-32 ">
       <CheckList
         list={todo.name}
         Active={updatedData.isCompleted}
@@ -122,19 +122,21 @@ export default function Todo({
           handleCompleted(e);
         }}
       />
-      <ImageUpload
-        onUploadSuccess={handleUploadSuccess}
-        initialImageUrl={updatedData.imageUrl}
-      />
-      <textarea
-        name="memo"
-        id=""
-        className="w-full h-2/3"
-        style={{ backgroundImage: "url(/memo.svg)" }}
-        onChange={onChangeMemo}
-        value={updatedData.memo}
-      ></textarea>
-      <div className="flex gap-2">
+      <div className="lg:flex w-full h-1/2 gap-6">
+        <ImageUpload
+          onUploadSuccess={handleUploadSuccess}
+          initialImageUrl={updatedData.imageUrl}
+        />
+        <textarea
+          name="memo"
+          id=""
+          className="w-full h-full flex-1"
+          style={{ backgroundImage: "url(/memo.svg)" }}
+          onChange={onChangeMemo}
+          value={updatedData.memo}
+        ></textarea>
+      </div>
+      <div className="flex gap-2 lg:justify-end">
         <Button
           variant="correction"
           handleClick={handleUpdate}

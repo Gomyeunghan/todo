@@ -96,7 +96,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   }, [previewUrl]);
 
   return (
-    <div className="flex justify-center items-center h-1/2 border-dashed border-2 border-slate-200 rounded-xl relative">
+    <div className="flex justify-center items-center h-full border-dashed border-2 border-slate-200 rounded-xl relative flex-1">
       {previewUrl ? (
         <img
           src={previewUrl}
