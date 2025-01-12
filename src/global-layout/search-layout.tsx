@@ -1,16 +1,24 @@
+"use client";
+
 import Button from "@/components/Button";
 import Search from "@/components/Search";
-import { ReactNode, useState } from "react";
+import { useStore } from "@/provider/StoreProvider";
+import { ChangeEvent, ReactNode, useState } from "react";
 
 export default function SearchLayOut({ children }: { children: ReactNode }) {
-  const [searchValue, setSearchValue] = useState("");
+  const [todo, setTodo] = useState("");
+  const todoList = useStore((state) => state.todoList);
+  const setTodoList = useStore((state) => state.setTodoList);
 
   const handleClick = () => {
-    console.log(searchValue);
+    if (todo.trim()) {
+      // 빈 문자열 체크
+      setTodoList([...todoList, todo]);
+      setTodo(""); // 입력 초기화
+    }
   };
-  const onChange = (e) => {
-    console.log(e.target.value);
-    setSearchValue(e.target.value);
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTodo(e.target.value);
   };
   return (
     <div>

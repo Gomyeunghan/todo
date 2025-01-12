@@ -1,30 +1,54 @@
-import { useState } from "react";
-import CheckIcon from "../CheckIcon";
+"use client";
 
-export default function CheckList({ list }: { list: string }) {
-  const [isActive, setActive] = useState(false);
+import { useEffect } from "react";
+import CheckIcon from "../CheckIcon";
+import { useStore } from "@/provider/StoreProvider";
+
+export default function CheckList({
+  list,
+  Active,
+}: {
+  list: string;
+  Active: boolean;
+}) {
+  const todoList = useStore((state) => state.todoList);
+  const setTodoList = useStore((state) => state.setTodoList);
+  const setDoneList = useStore((state) => state.setDoneList);
+  const doneList = useStore((state) => state.doneList);
 
   const onClick = () => {
-    setActive(!isActive);
+    if (Active) {
+      const updatedDoneList = doneList.filter((item) => item !== list);
+      const updatedList = [...todoList, list];
+      setTodoList(updatedList);
+      setDoneList(updatedDoneList);
+    } else {
+      const updatedList = todoList.filter((item) => item !== list);
+      const updatedDoneList = [...doneList, list];
+      setTodoList(updatedList);
+      setDoneList(updatedDoneList);
+    }
   };
 
-  return !isActive ? (
-    <div
-      className="rounded-3xl border-solid border-2 border-slate-900 flex items-center gap-4 p-2"
-      onClick={onClick}
-    >
-      <CheckIcon isActive={isActive} />
-      {list}
-    </div>
-  ) : (
+  useEffect(() => {}, [Active]);
+
+  return Active ? (
     <div>
       <div
         className="rounded-3xl border-solid border-2 border-slate-900 flex items-center gap-4 p-2 bg-violet-100"
         onClick={onClick}
       >
-        <CheckIcon isActive={isActive} />
+        <CheckIcon isActive={Active} />
         <span className="line-through">{list}</span>
       </div>
+    </div>
+  ) : (
+    <div
+      className="rounded-3xl border-solid border-2 border-slate-900 flex items-center gap-4 p-2"
+      onClick={onClick}
+    >
+      <CheckIcon isActive={Active} />
+      {list}
     </div>
   );
 }

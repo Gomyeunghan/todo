@@ -1,11 +1,12 @@
 import Header from "@/components/Header";
+import StoreProvider from "@/provider/StoreProvider";
 import { ReactNode } from "react";
 
 export default function GlobalLayOut({ children }: { children: ReactNode }) {
   return (
-    <div>
+    <StoreProvider>
       <Header />
       <main className="px-4">{children}</main>
-    </div>
+    </StoreProvider>
   );
 }

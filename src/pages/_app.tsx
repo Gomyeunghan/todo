@@ -13,6 +13,5 @@ export default function App({
   pageProps,
 }: AppProps & { Component: NextPageWithLayout }) {
   const getLayout = Component.getLayout ?? ((page: ReactNode) => page);
-
   return <GlobalLayOut>{getLayout(<Component {...pageProps} />)}</GlobalLayOut>;
 }

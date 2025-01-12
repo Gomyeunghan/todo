@@ -1,4 +1,6 @@
-export default function DoneZone() {
+import CheckList from "../Check-list";
+
+export default function DoneZone({ doneLists }: { doneLists: string[] }) {
   return (
     <div className="flex items-start flex-col w-full">
       <svg
@@ -14,14 +16,24 @@ export default function DoneZone() {
           fill="#FCD34D"
         />
       </svg>
-      <div className="flex gap-4 flex-col items-center w-full">
-        <img src="/Type=Done, Size=Small.svg" className="block md:hidden" />
-        <img src="/Type=Done, Size=Large.svg" className="hidden md:block" />
-        <div className="flex flex-col items-center font-bold text-slate-400">
-          <p>아직 다 한 일이 없어요.</p>
-          <p>해야 할 일을 체크해보세요!</p>
+      {doneLists.length !== 0 ? (
+        doneLists.map((item, index) => {
+          return (
+            <li key={index} className="list-none">
+              <CheckList list={item} Active={true} />
+            </li>
+          );
+        })
+      ) : (
+        <div className="flex gap-4 flex-col items-center w-full">
+          <img src="/Type=Done, Size=Small.svg" className="block md:hidden" />
+          <img src="/Type=Done, Size=Large.svg" className="hidden md:block" />
+          <div className="flex flex-col items-center font-bold text-slate-400">
+            <p>아직 다 한 일이 없어요.</p>
+            <p>해야 할 일을 체크해보세요!</p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

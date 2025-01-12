@@ -16,11 +16,11 @@ export default function TodoZone({ checkList }: { checkList: string[] }) {
           fill="#15803D"
         />
       </svg>
-      {checkList ? (
+      {checkList.length !== 0 ? (
         checkList.map((item, index) => {
           return (
             <li key={index} className="list-none">
-              <CheckList list={item} />
+              <CheckList list={item} Active={false} />
             </li>
           );
         })
