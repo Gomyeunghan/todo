@@ -5,7 +5,7 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
 import deleteTodoItem from "../api/deleteTodoItem";
 import { useStore } from "@/provider/StoreProvider";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import updateTodo from "../api/patchTodoItem";
 import ImageUpload from "@/components/ImageUpload/ImgageUpload";
 
@@ -79,7 +79,7 @@ export default function Todo({
     }));
     console.log(value);
   };
-  const handleCompleted = async (e: MouseEvent) => {
+  const handleCompleted = async (e: MouseEvent<HTMLElement, MouseEvent>) => {
     if (e.target instanceof HTMLInputElement) {
       return; // input인 경우 이벤트 처리를 멈춤
     }
@@ -118,9 +118,7 @@ export default function Todo({
         id={todo.id}
         detail={true}
         onChange={onChangetitle}
-        onClick={(e) => {
-          handleCompleted(e);
-        }}
+        onClick={handleCompleted}
       />
       <div className="lg:flex w-full h-1/2 gap-6">
         <ImageUpload

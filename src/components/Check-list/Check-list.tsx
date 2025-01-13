@@ -16,7 +16,7 @@ export default function CheckList({
   Active: boolean;
   id: number;
   detail?: boolean;
-  onClick?: () => void;
+  onClick?: any;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
   const [inputValue, setInputValue] = useState(list);

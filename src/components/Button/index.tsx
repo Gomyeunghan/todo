@@ -3,11 +3,12 @@ import Icon from "../Icons";
 
 interface ButtonProps {
   variant: ButtonVariant;
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   textClassName?: string;
   IconeColor?: string;
   handleClick: () => void;
+  disabled?: boolean;
 }
 
 type ButtonVariant = "add" | "delete" | "correction";
@@ -31,9 +32,11 @@ export default function Button({
   textClassName = "",
   IconeColor = "text-slate-200",
   handleClick,
+  disabled,
 }: ButtonProps) {
   return (
     <button
+      disabled={disabled}
       onClick={handleClick}
       className={`border-solid rounded-3xl border-2 border-slate-900 p-4 flex items-center gap-2 justify-center ${buttonStyles[variant]} ${className} max-w-44`}
     >

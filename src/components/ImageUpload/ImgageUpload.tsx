@@ -3,7 +3,6 @@ import Button from "../Button";
 
 interface ImageUploadProps {
   onUploadSuccess: (imageUrl: string) => void;
-  className?: string;
   initialImageUrl?: string; // 초기 이미지 URL prop 추가
 }
 
@@ -13,7 +12,6 @@ interface UploadResponse {
 
 const ImageUpload: React.FC<ImageUploadProps> = ({
   onUploadSuccess,
-  className,
   initialImageUrl,
 }) => {
   const [isUploading, setIsUploading] = useState<boolean>(false);

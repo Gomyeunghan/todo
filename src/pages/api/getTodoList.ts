@@ -1,5 +1,5 @@
 export default async function getTodoList(): Promise<
-  [{ name: string; id: number }] | null
+  [{ name: string; id: number; isCompleted: boolean }] | null
 > {
   const url = `https://assignment-todolist-api.vercel.app/api/Han/items?page=1&pageSize=10`;
 

@@ -1,21 +1,24 @@
 import CheckList from "@/components/Check-list/Check-list";
 import updateTodo from "@/pages/api/patchTodoItem";
 import { useStore } from "@/provider/StoreProvider";
+import { TodolistType } from "@/type/dataType";
 
-export default function TodoZone({
-  checkList,
-}: {
-  checkList: { id?: number; name: string; isCompleted: boolean }[];
-}) {
+export default function TodoZone({ checkList }: { checkList: TodolistType[] }) {
   const setTodoList = useStore((state) => state.setTodoList);
 
   const arr = checkList.filter((item) => !item.isCompleted);
   const donearr = checkList.filter((item) => item.isCompleted);
 
-  const handleCheckListClick = async (item) => {
+  const handleCheckListClick = async (item: TodolistType) => {
     try {
-      await updateTodo(item.id, false);
+      if (!item.id) return;
 
+      await updateTodo(item.id, {
+        name: item.name,
+        isCompleted: false,
+        imageUrl: item.imageUrl,
+        memo: item.memo,
+      });
       setTodoList(
         checkList.map((listItem) =>
           listItem.id === item.id

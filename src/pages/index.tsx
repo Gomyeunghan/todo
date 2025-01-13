@@ -1,20 +1,14 @@
-import DoneZone from "@/components/DoneZone/DoneZone";
 import TodoZone from "@/components/TodoZone/TodoZone";
 import SearchLayOut from "@/global-layout/search-layout";
 import { useStore } from "@/provider/StoreProvider";
 import { ReactNode, useEffect } from "react";
 import getTodoList from "./api/getTodoList";
-
-interface todolistType {
-  id?: number;
-  isCompleted: boolean;
-  name: string;
-}
+import { TodolistType } from "@/type/dataType";
 
 export const getServerSideProps = async (): Promise<{
-  props: { todoLists: todolistType[] };
+  props: { todoLists: TodolistType[] };
 }> => {
-  const todoLists: todolistType[] =
+  const todoLists: TodolistType[] =
     (await getTodoList())?.map((todo) => ({
       id: todo.id!,
       name: todo.name,
@@ -29,11 +23,11 @@ export const getServerSideProps = async (): Promise<{
 };
 
 interface HomeProps {
-  todoLists: todolistType[];
+  todoLists: TodolistType[];
 }
 
 export default function Home({ todoLists }: HomeProps) {
-  const todoList = useStore((state) => state.todoList as todolistType[]);
+  const todoList = useStore((state) => state.todoList as TodolistType[]);
   const setTodoList = useStore((state) => state.setTodoList);
 
   console.log(todoList);
