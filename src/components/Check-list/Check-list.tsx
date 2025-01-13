@@ -16,6 +16,7 @@ export default function CheckList({
   Active: boolean;
   id: number;
   detail?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onClick?: any;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
