@@ -34,10 +34,17 @@ export default function Button({
   handleClick,
   disabled,
 }: ButtonProps) {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleClick();
+    }
+  };
+
   return (
     <button
       disabled={disabled}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       className={`border-solid rounded-3xl border-2 border-slate-900 p-4 flex items-center gap-2 justify-center ${buttonStyles[variant]} ${className} max-w-44`}
     >
       <Icon type={iconTypes[variant]} color={IconeColor} />

@@ -12,11 +12,10 @@ export default function SearchLayOut({ children }: { children: ReactNode }) {
   const setTodoList = useStore((state) => state.setTodoList);
 
   const handleClick = () => {
-    if (todo.trim()) {
-      // 빈 문자열 체크
-      setTodoList([...todoList, { name: todo }]);
-      setTodo(""); // 입력 초기화
-    }
+    if (todo.trim() === "") return;
+    // 빈 문자열 체크
+    setTodoList([...todoList, { name: todo }]);
+    setTodo(""); // 입력 초기화
     handleSubmit();
   };
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +35,7 @@ export default function SearchLayOut({ children }: { children: ReactNode }) {
   return (
     <div>
       <div className="flex items-center gap-2 justify-center">
-        <Search onChange={onChange} />
+        <Search onChange={onChange} onKeyDown={handleClick} />
         <Button
           variant="add"
           handleClick={handleClick}
