@@ -10,7 +10,7 @@ export interface TodoListState {
 }
 
 export const createTodoStore: StateCreator<TodoListState> = (set) => ({
-  todoList: [] || null,
+  todoList: [],
   setTodoList: (value: { id?: number | null; name: string }[]) =>
     set({ todoList: value }),
   doneList: [],
