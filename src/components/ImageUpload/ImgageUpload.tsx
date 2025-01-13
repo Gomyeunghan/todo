@@ -102,7 +102,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           className="w-full h-full object-contain rounded-xl"
         />
       ) : (
-        <img src="/loadingimg.svg" alt="기본 이미지" />
+        <img src="/loadingImg.svg" alt="기본 이미지" />
       )}
 
       {isUploading && (
